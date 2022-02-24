@@ -4,14 +4,10 @@ export default {
   title: 'dark',
 
   colors: {
-    primaryMain: '#020524',
-    primaryMedium: '#08094A',
-    primaryLight: '#240f5A',
+    text: { primary: '#FEFCFB', secondary: '#121717' },
 
+    background: { main: '#020524', medium: '#08094A', light: '#240f5A' },
     button: '#F1A208',
-
-    text: '#FEFCFB',
-    textSecondary: '#121717',
 
     barStyle: 'light-content' as StatusBarStyle | null | undefined,
   },
