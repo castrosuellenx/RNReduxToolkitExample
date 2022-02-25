@@ -1,14 +1,20 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
+import Counter from './screens/Counter';
 
-import Home from './screens/Home';
+// import SolarSystem from './screens/SolarSystem';
+import store from './store';
 import { dark } from './styles/themes';
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={dark}>
-      <Home />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={dark}>
+        {/* <SolarSystem /> */}
+        <Counter />
+      </ThemeProvider>
+    </Provider>
   );
 };
 
