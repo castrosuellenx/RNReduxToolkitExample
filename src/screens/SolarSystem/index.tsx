@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components/native';
 
 import * as S from './styles';
 
-const Home: React.FC = () => {
+const SolarSystem: React.FC = () => {
   const theme = useTheme();
 
   const loading = false; // PROVISORIO
@@ -62,4 +62,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default SolarSystem;

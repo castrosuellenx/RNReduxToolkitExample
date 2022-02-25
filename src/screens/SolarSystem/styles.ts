@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { TouchableOpacityProps } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -23,7 +22,6 @@ export const Box = styled.View`
   align-items: center;
   border-radius: ${RFValue(20)}px;
   padding-vertical: ${RFValue(25)}px;
-  background-color: ${({ theme }) => theme.colors.background.medium};
 `;
 
 export const Subtitle = styled.Text`
