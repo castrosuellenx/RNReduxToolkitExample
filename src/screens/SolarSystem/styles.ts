@@ -57,6 +57,8 @@ export const InfoSubtitle = styled.Text`
   margin-left: ${RFValue(25)}px;
 `;
 
+export const FlatList = styled.FlatList``;
+
 export const Button = styled.TouchableOpacity`
   width: 60%;
   align-items: center;
@@ -72,4 +74,41 @@ export const ButtonTitle = styled.Text`
   font-family: ${({ theme }) => theme.fontFamily.bold};
   font-size: ${RFValue(16)}px;
   color: ${({ theme }) => theme.colors.text.secondary};
+`;
+
+export const WrapperGetSolarSystem = styled.View`
+  width: 85%;
+  border-radius: ${RFValue(10)}px;
+  padding-vertical: ${RFValue(85)}px;
+  background-color: ${({ theme }) => theme.colors.background.light};
+`;
+
+export const TitleGetSolarSystem = styled.Text`
+  font-family: ${({ theme }) => theme.fontFamily.regular};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.text.primary};
+  padding-horizontal: ${RFValue(20)}px;
+  text-align: center;
+  margin-bottom: ${RFValue(30)}px;
+`;
+
+export const ButtonGetSolarSystem = styled.TouchableOpacity`
+  align-self: center;
+`;
+
+export const ButtonGetSolarSystemText = styled.Text`
+  font-family: ${({ theme }) => theme.fontFamily.bold};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.button};
+  text-align: center;
+  text-decoration: underline;
+`;
+
+export const ErrorText = styled.Text`
+  font-family: ${({ theme }) => theme.fontFamily.bold};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.text.primary};
+  padding-horizontal: ${RFValue(20)}px;
+  text-align: center;
+  margin-top: ${RFValue(30)}px;
 `;

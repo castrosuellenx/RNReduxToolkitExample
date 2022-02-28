@@ -1,13 +1,26 @@
-import React from 'react';
+/* eslint-disable react/no-unescaped-entities */
+import React, { useEffect } from 'react';
 import { ActivityIndicator } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTheme } from 'styled-components/native';
 
+import { RootState } from '@/store';
+import {
+  getRandomPlanet,
+  getSolarSystemRequest,
+} from '@/store/slices/planetsSlice';
 import * as S from './styles';
 
 const SolarSystem: React.FC = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const { loadingSolarSystem, planet, error, planetsList } = useSelector(
+    (state: RootState) => state.planets,
+  );
 
-  const loading = false; // PROVISORIO
+  useEffect(() => {
+    dispatch(getSolarSystemRequest());
+  }, [dispatch]);
 
   return (
     <S.Container>
@@ -17,47 +30,74 @@ const SolarSystem: React.FC = () => {
       />
       <S.Title>Solar System</S.Title>
 
-      <S.Box>
-        <S.Subtitle>Planet</S.Subtitle>
+      {planetsList.length > 0 ? (
+        <S.Box>
+          <S.Subtitle>Planet</S.Subtitle>
 
-        <S.Content>
-          <S.WrapperInfo>
-            <S.InfoTitle>Name</S.InfoTitle>
-            <S.InfoSubtitle>La Terre</S.InfoSubtitle>
-          </S.WrapperInfo>
+          <S.Content>
+            <S.WrapperInfo>
+              <S.InfoTitle>Name</S.InfoTitle>
+              <S.InfoSubtitle>{planet.name}</S.InfoSubtitle>
+            </S.WrapperInfo>
 
-          <S.WrapperInfo>
-            <S.InfoTitle>English Name</S.InfoTitle>
-            <S.InfoSubtitle>Earth</S.InfoSubtitle>
-          </S.WrapperInfo>
+            <S.WrapperInfo>
+              <S.InfoTitle>English Name</S.InfoTitle>
+              <S.InfoSubtitle>{planet.englishName}</S.InfoSubtitle>
+            </S.WrapperInfo>
 
-          <S.WrapperInfo>
-            <S.InfoTitle>Moons</S.InfoTitle>
-            <S.InfoSubtitle>La Lune - Moon</S.InfoSubtitle>
-          </S.WrapperInfo>
+            <S.WrapperInfo>
+              <S.InfoTitle>Number of Moons</S.InfoTitle>
+              <S.InfoSubtitle>
+                {planet.moons ? planet.moons.length : '0'}
+              </S.InfoSubtitle>
+            </S.WrapperInfo>
 
-          <S.WrapperInfo>
-            <S.InfoTitle>Density</S.InfoTitle>
-            <S.InfoSubtitle>5.5136</S.InfoSubtitle>
-          </S.WrapperInfo>
+            <S.WrapperInfo>
+              <S.InfoTitle>Density</S.InfoTitle>
+              <S.InfoSubtitle>{planet.density}</S.InfoSubtitle>
+            </S.WrapperInfo>
 
-          <S.WrapperInfo>
-            <S.InfoTitle>Gravity</S.InfoTitle>
-            <S.InfoSubtitle>9.8</S.InfoSubtitle>
-          </S.WrapperInfo>
-        </S.Content>
+            <S.WrapperInfo>
+              <S.InfoTitle>Gravity</S.InfoTitle>
+              <S.InfoSubtitle>{planet.gravity}</S.InfoSubtitle>
+            </S.WrapperInfo>
+          </S.Content>
 
-        <S.Button activeOpacity={0.7}>
-          {loading ? (
-            <ActivityIndicator
-              size="small"
-              color={theme.colors.text.secondary}
-            />
+          <S.Button
+            activeOpacity={0.7}
+            onPress={() => dispatch(getRandomPlanet())}
+          >
+            <S.ButtonTitle>Explore a Planet!</S.ButtonTitle>
+          </S.Button>
+        </S.Box>
+      ) : (
+        <S.WrapperGetSolarSystem>
+          {loadingSolarSystem ? (
+            <ActivityIndicator size="large" color={theme.colors.text.primary} />
           ) : (
-            <S.ButtonTitle>Explore a new Planet!</S.ButtonTitle>
+            <>
+              <S.TitleGetSolarSystem>
+                You still don't have any infos.{'\n'}Please, press the button
+                below to load them.
+              </S.TitleGetSolarSystem>
+
+              <S.ButtonGetSolarSystem
+                onPress={() => dispatch(getSolarSystemRequest())}
+              >
+                <S.ButtonGetSolarSystemText>
+                  Get solar system!
+                </S.ButtonGetSolarSystemText>
+              </S.ButtonGetSolarSystem>
+
+              {error && (
+                <S.ErrorText>
+                  Not enough fuel in your rocket, {'\n'}please, try again later.
+                </S.ErrorText>
+              )}
+            </>
           )}
-        </S.Button>
-      </S.Box>
+        </S.WrapperGetSolarSystem>
+      )}
     </S.Container>
   );
 };
