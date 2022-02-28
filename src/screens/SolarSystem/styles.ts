@@ -38,6 +38,15 @@ export const Content = styled.View`
   background-color: ${({ theme }) => theme.colors.background.light};
 `;
 
+export const HelpTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fontFamily.regular};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.text.primary};
+  padding-horizontal: ${RFValue(20)}px;
+  text-align: center;
+  margin-vertical: ${RFValue(30)}px;
+`;
+
 export const WrapperInfo = styled.View`
   margin-vertical: ${RFValue(10)}px;
 `;
@@ -56,8 +65,6 @@ export const InfoSubtitle = styled.Text`
   color: ${({ theme }) => theme.colors.text.primary};
   margin-left: ${RFValue(25)}px;
 `;
-
-export const FlatList = styled.FlatList``;
 
 export const Button = styled.TouchableOpacity`
   width: 60%;

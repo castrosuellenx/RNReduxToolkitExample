@@ -35,32 +35,40 @@ const SolarSystem: React.FC = () => {
           <S.Subtitle>Planet</S.Subtitle>
 
           <S.Content>
-            <S.WrapperInfo>
-              <S.InfoTitle>Name</S.InfoTitle>
-              <S.InfoSubtitle>{planet.name}</S.InfoSubtitle>
-            </S.WrapperInfo>
+            {planet.id ? (
+              <>
+                <S.WrapperInfo>
+                  <S.InfoTitle>Name</S.InfoTitle>
+                  <S.InfoSubtitle>{planet.name}</S.InfoSubtitle>
+                </S.WrapperInfo>
 
-            <S.WrapperInfo>
-              <S.InfoTitle>English Name</S.InfoTitle>
-              <S.InfoSubtitle>{planet.englishName}</S.InfoSubtitle>
-            </S.WrapperInfo>
+                <S.WrapperInfo>
+                  <S.InfoTitle>English Name</S.InfoTitle>
+                  <S.InfoSubtitle>{planet.englishName}</S.InfoSubtitle>
+                </S.WrapperInfo>
 
-            <S.WrapperInfo>
-              <S.InfoTitle>Number of Moons</S.InfoTitle>
-              <S.InfoSubtitle>
-                {planet.moons ? planet.moons.length : '0'}
-              </S.InfoSubtitle>
-            </S.WrapperInfo>
+                <S.WrapperInfo>
+                  <S.InfoTitle>Number of Moons</S.InfoTitle>
+                  <S.InfoSubtitle>
+                    {planet.moons ? planet.moons.length : '0'}
+                  </S.InfoSubtitle>
+                </S.WrapperInfo>
 
-            <S.WrapperInfo>
-              <S.InfoTitle>Density</S.InfoTitle>
-              <S.InfoSubtitle>{planet.density}</S.InfoSubtitle>
-            </S.WrapperInfo>
+                <S.WrapperInfo>
+                  <S.InfoTitle>Density</S.InfoTitle>
+                  <S.InfoSubtitle>{planet.density}</S.InfoSubtitle>
+                </S.WrapperInfo>
 
-            <S.WrapperInfo>
-              <S.InfoTitle>Gravity</S.InfoTitle>
-              <S.InfoSubtitle>{planet.gravity}</S.InfoSubtitle>
-            </S.WrapperInfo>
+                <S.WrapperInfo>
+                  <S.InfoTitle>Gravity</S.InfoTitle>
+                  <S.InfoSubtitle>{planet.gravity}</S.InfoSubtitle>
+                </S.WrapperInfo>
+              </>
+            ) : (
+              <S.HelpTitle>
+                Press the button below to explore a planet!
+              </S.HelpTitle>
+            )}
           </S.Content>
 
           <S.Button
